@@ -34,7 +34,7 @@
     <ion-input placeholder="Email (username)" [(ngModel)]="eemail" type="text" value="{{userlog.username}}"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-input placeholder="Password" [(ngModel)]="password" type="text"></ion-input>
+    <ion-input placeholder="Password" [(ngModel)]="pass" value="{{userlog.password}}" type="text" hidden></ion-input>
   </ion-item>
 </ion-list>
   <button ion-button full (click)="inReg()">Modifica Profilo</button>
