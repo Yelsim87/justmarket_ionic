@@ -1,0 +1,41 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Profilo Utente</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+<ion-list>
+  <ion-item *ngIf="trollo === 'true'">
+    Nome: {{userlog.nome}}
+  </ion-item>
+  <ion-item *ngIf="trollo === 'true'">
+    Cognome: {{userlog.cognome}}
+  </ion-item>
+  <ion-item *ngIf="trollo === 'true'">
+    Città: {{userlog.citta}}
+  </ion-item>
+  <ion-item *ngIf="trollo === 'true'">
+    Via: {{userlog.via}}
+  </ion-item>
+  <ion-item *ngIf="trollo === 'true'">
+    Provincia: {{userlog.provincia}}
+  </ion-item>
+  <ion-item *ngIf="trollo === 'true'">
+    Cap: {{userlog.cap}}
+  </ion-item>
+  <ion-item *ngIf="trollo === 'true'">
+    Numero di cellulare: {{userlog.cellulare}}
+  </ion-item>
+  <ion-item *ngIf="trollo === 'true'">
+    Email (username): {{userlog.username}}
+  </ion-item>
+  <ion-item *ngIf="trollo === 'true'">
+    Password: {{userlog.password}}
+  </ion-item>
+</ion-list>
+  <button ion-button full *ngIf="trollo === 'true'" [navPush]="modPage">Modifica profilo</button>
+</ion-content>

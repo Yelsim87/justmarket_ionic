@@ -4,31 +4,53 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
+import { RegistraPage } from "../pages/registra/registra";
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import {ListaprodottiPage} from "../pages/listaprodotti/listaprodotti";
+import {HttpClientModule, HttpClient, HTTP_INTERCEPTORS} from "@angular/common/http";
+import { InterceptorProvider } from '../providers/interceptor/interceptor';
+import { SharedProvider } from '../providers/shared/shared';
+import { LoginProvider } from '../providers/login/login';
+import {ProfiloutentePage} from "../pages/profiloutente/profiloutente";
+import {ModificaprofiloutentePage} from "../pages/modificaprofiloutente/modificaprofiloutente";
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    ListPage
+    RegistraPage,
+    ProfiloutentePage,
+    ModificaprofiloutentePage,
+    ListaprodottiPage
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage
+    RegistraPage,
+    ProfiloutentePage,
+    ModificaprofiloutentePage,
+    ListaprodottiPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    HttpClient,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InterceptorProvider,
+      multi: true,
+    },
+    SharedProvider,
+    LoginProvider
   ]
 })
 export class AppModule {}

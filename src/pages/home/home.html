@@ -3,16 +3,41 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
+    <ion-title>Home <button ion-button icon-only [navPush]="profPage" *ngIf="trollo === 'true'">
+      <ion-icon name="person"></ion-icon>
+    </button>
+      <button ion-button icon-only (click)="outLog()" *ngIf="trollo === 'true'">
+        <ion-icon name="log-out"></ion-icon>
+      </button></ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h3>Ionic Menu Starter</h3>
+  <h3 *ngIf="trollo === 'false'">Login</h3>
 
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
+  <ion-item *ngIf="trollo === 'false'">
+    <ion-label fixed>Email</ion-label>
+    <ion-input type="text" [(ngModel)]="user"></ion-input>
+  </ion-item>
 
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+  <ion-item *ngIf="trollo === 'false'">
+    <ion-label fixed>Password</ion-label>
+    <ion-input type="password" [(ngModel)]="pass"></ion-input>
+  </ion-item>
+
+  <button ion-button full (click)="inLog()" *ngIf="trollo === 'false'">Accedi</button>
+  <ion-item *ngIf="trollo === 'true'"> Benvenuto {{userlog.nome}}!
+  </ion-item>
+
+  <!--<ion-item *ngIf="trollo === 'true'">
+    <button ion-button icon-only [navPush]="profPage">
+      <ion-icon name="person"></ion-icon>
+    </button>
+    <button ion-button icon-only (click)="outLog()">
+    <ion-icon name="log-out"></ion-icon>
+    </button>
+  </ion-item>-->
+
+  <a [navPush]="regPage" *ngIf="trollo === 'false'">Registrati</a>
+
 </ion-content>

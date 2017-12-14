@@ -1,0 +1,48 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Registra</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-item>
+    <ion-label fixed>Nome</ion-label>
+    <ion-input type="text" [(ngModel)]="nome"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label fixed>Cognome</ion-label>
+    <ion-input type="text" [(ngModel)]="cognome"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label fixed>Via</ion-label>
+    <ion-input type="text" [(ngModel)]="via"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label fixed>Città</ion-label>
+    <ion-input type="text" [(ngModel)]="citta"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label fixed>Provincia</ion-label>
+    <ion-input type="text" [(ngModel)]="provincia"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label fixed>Cap</ion-label>
+    <ion-input type="text" [(ngModel)]="cap"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label fixed>Cellulare</ion-label>
+    <ion-input type="text" [(ngModel)]="cell"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label fixed>Imposta Password</ion-label>
+    <ion-input type="text" [(ngModel)]="pass"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label fixed>Email</ion-label>
+    <ion-input type="text" [(ngModel)]="eemail"></ion-input>
+  </ion-item>
+  <button ion-button full (click)="inReg()">Registrati</button>
+</ion-content>

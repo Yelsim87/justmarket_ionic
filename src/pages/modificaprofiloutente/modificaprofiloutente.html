@@ -1,0 +1,41 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Modifica il Profilo</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+<ion-list>
+  <ion-item>
+    <ion-input placeholder="Nome" [(ngModel)]="nome" type="text" value="{{userlog.nome}}"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input placeholder="Cognome" [(ngModel)]="cognome" type="text" value="{{userlog.cognome}}"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input placeholder="Via" [(ngModel)]="via" type="text" value="{{userlog.via}}"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input placeholder="Città" [(ngModel)]="citta" type="text" value="{{userlog.citta}}"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input placeholder="Provincia" [(ngModel)]="provincia" type="text" value="{{userlog.provincia}}"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input placeholder="cap" [(ngModel)]="cap" type="text" value="{{userlog.cap}}"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input placeholder="Cellulare" [(ngModel)]="cellulare" type="text" value="{{userlog.cellulare}}"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input placeholder="Email (username)" [(ngModel)]="eemail" type="text" value="{{userlog.username}}"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input placeholder="Password" [(ngModel)]="password" type="text"></ion-input>
+  </ion-item>
+</ion-list>
+  <button ion-button full (click)="inReg()">Modifica Profilo</button>
+</ion-content>

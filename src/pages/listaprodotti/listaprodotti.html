@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Lista Prodotti <button ion-button icon-only [navPush]="profPage" *ngIf="trollo === 'true'">
+      <ion-icon name="person"></ion-icon>
+    </button>
+      <button ion-button icon-only (click)="outLog()" *ngIf="trollo === 'true'">
+        <ion-icon name="log-out"></ion-icon>
+      </button></ion-title>
+    <ion-segment [(ngModel)]="prodotti">
+      <ion-segment-button value="tot">
+        Prodotti
+      </ion-segment-button>
+      <ion-segment-button value="sco">
+        Offerta
+      </ion-segment-button>
+      <ion-segment-button value="nsco">
+        Non Scontati
+      </ion-segment-button>
+    </ion-segment>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <div [ngSwitch]="prodotti">
+    <ion-list *ngSwitchCase="'tot'">
+ <ion-item *ngFor="let l of listap">{{l}}</ion-item>
+  </ion-list>
+  </div>
+</ion-content>
