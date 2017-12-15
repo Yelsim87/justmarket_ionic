@@ -24,6 +24,11 @@ export class LoginProvider {
     return this.http.post(indirizzo + '/register', user, httpOptions);
   }
 
+  inMod(user: Utente) {
+    console.log(indirizzo + '/modifica'+ user);
+    return this.http.post(indirizzo + '/modifica', user, httpOptions);
+  }
+
   isLog() {
     console.log('ciao'+ ' '+localStorage.getItem('token'));
     return this.http.get(indirizzo + '/islogged',{responseType: 'text'});

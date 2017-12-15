@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {IonicPage, NavController} from 'ionic-angular';
+import {IonicPage, Loading, LoadingController, NavController, Platform} from 'ionic-angular';
 import {Utente} from "../../Utente";
 import {LoginProvider} from "../../providers/login/login";
 import {ModificaprofiloutentePage} from "../modificaprofiloutente/modificaprofiloutente";
@@ -11,13 +11,16 @@ import {ModificaprofiloutentePage} from "../modificaprofiloutente/modificaprofil
 })
 export class ProfiloutentePage {
   modPage: any;
-  userlog: Utente;
+  userlog = new Utente;
   trollo: string;
+  loading: Loading;
 
-  constructor(private loginService: LoginProvider, public nav: NavController) {
-    this.outProf();
-    this.isLog();
+  constructor(public loadingCtrl: LoadingController, public platform: Platform, private loginService: LoginProvider, public nav: NavController) {
     this.modPage = ModificaprofiloutentePage;
+    this.platform.ready().then(() => {
+      this.showLoading();
+      this.isLog();
+    })
   }
 
   ionViewDidLoad() {
@@ -30,11 +33,23 @@ export class ProfiloutentePage {
       this.userlog = <Utente>datiuser;
     })
   }
+
   isLog() {
     this.loginService.isLog().subscribe(d => {
       console.log(d);
       this.trollo = d;
+      if(this.trollo === 'true') {
+        this.outProf();
+      }
+      this.loading.dismiss();
     })
+  }
+
+  showLoading() {
+    this.loading = this.loadingCtrl.create({
+      content: "Caricamento..."
+    });
+    this.loading.present();
   }
 
 }
