@@ -40,9 +40,7 @@ export class ModificaprofiloutentePage {
       console.log(this.userlog);
       this.loginP.inMod(this.userlog).subscribe(data => {
         console.log(data);
-        // this.showLoading();
         this.outLog();
-        // this.showLoading();
         this.nav.setRoot(HomePage);
         this.presentAlert3();
       }, e => {
@@ -56,9 +54,7 @@ export class ModificaprofiloutentePage {
     console.log(this.userlog);
     this.loginP.inReg(this.userlog).subscribe(data => {
       console.log(data);
-      this.showLoading();
       this.outLog();
-      this.showLoading();
       this.nav.setRoot(HomePage);
       this.presentAlert3();
     }, e => {

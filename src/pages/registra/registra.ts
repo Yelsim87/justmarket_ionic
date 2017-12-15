@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {AlertController, IonicPage, NavController} from 'ionic-angular';
+import {AlertController, IonicPage, Loading, LoadingController, NavController, Platform} from 'ionic-angular';
 import {LoginProvider} from "../../providers/login/login";
 import {Utente} from "../../Utente";
 import {HomePage} from "../home/home";
@@ -20,7 +20,12 @@ eemail:string='';
 pass:string='';
 cap:string='';
 
-  constructor(public nav: NavController, private loginP: LoginProvider, private alertCtrl: AlertController) {
+  loading: Loading;
+
+  constructor(public loadingCtrl: LoadingController, public platform: Platform, public nav: NavController, private loginP: LoginProvider, private alertCtrl: AlertController) {
+    //this.platform.ready().then(() => {
+      //this.showLoading();
+    //})
   }
 
   ionViewDidLoad() {
@@ -66,6 +71,13 @@ cap:string='';
       buttons: ['OK']
     });
     alert.present();
+  }
+
+  showLoading() {
+    this.loading = this.loadingCtrl.create({
+      content: "Caricamento..."
+    });
+    this.loading.present();
   }
 
 }

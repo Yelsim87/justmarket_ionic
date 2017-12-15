@@ -21,6 +21,7 @@
 
 
 <ion-content padding>
+
   <div [ngSwitch]="mod">
     <ion-list *ngSwitchCase="'per'">
       <ion-item>
@@ -34,14 +35,39 @@
       <button ion-button (click)="inMod()">Modifica</button>
     </ion-list>
   </div>
+
     <div [ngSwitch]="mod">
       <ion-list *ngSwitchCase="'rec'">
-        <ion-item></ion-item>
+        <ion-item>
+          <ion-label color="primary" fixed>Via/Piazza</ion-label>
+          <ion-input type="text" [(ngModel)]="userlog.via"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label color="primary" fixed>Città</ion-label>
+          <ion-input type="text" [(ngModel)]="userlog.citta"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label color="primary" fixed>Provincia</ion-label>
+          <ion-input type="text" [(ngModel)]="userlog.provincia"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label color="primary" fixed>Cap</ion-label>
+          <ion-input type="text" [(ngModel)]="userlog.cap"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label color="primary" fixed>Cellulare</ion-label>
+          <ion-input type="text" [(ngModel)]="userlog.cellulare"></ion-input>
+        </ion-item>
+        <button ion-button (click)="inMod()">Modifica</button>
       </ion-list>
     </div>
       <div [ngSwitch]="mod">
         <ion-list *ngSwitchCase="'pass'">
-          <ion-item></ion-item>
+          <ion-item>
+            <ion-label color="primary" fixed>Nome</ion-label>
+            <ion-input type="text" [(ngModel)]="userlog.password"></ion-input>
+          </ion-item>
+          <button ion-button (click)="inReg()">Modifica</button>
         </ion-list>
   </div>
 </ion-content>

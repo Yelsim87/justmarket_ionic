@@ -15,6 +15,7 @@ import { SharedProvider } from '../providers/shared/shared';
 import { LoginProvider } from '../providers/login/login';
 import {ProfiloutentePage} from "../pages/profiloutente/profiloutente";
 import {ModificaprofiloutentePage} from "../pages/modificaprofiloutente/modificaprofiloutente";
+import {StoricoPage} from "../pages/storico/storico";
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import {ModificaprofiloutentePage} from "../pages/modificaprofiloutente/modifica
     RegistraPage,
     ProfiloutentePage,
     ModificaprofiloutentePage,
+    StoricoPage,
     ListaprodottiPage
   ],
   imports: [
@@ -37,6 +39,7 @@ import {ModificaprofiloutentePage} from "../pages/modificaprofiloutente/modifica
     RegistraPage,
     ProfiloutentePage,
     ModificaprofiloutentePage,
+    StoricoPage,
     ListaprodottiPage
   ],
   providers: [

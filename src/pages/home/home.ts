@@ -21,10 +21,9 @@ export class HomePage {
   constructor(public loadingCtrl: LoadingController, public platform: Platform, public nav: NavController, private loginService: LoginProvider, private alertCtrl: AlertController) {
       this.regPage = RegistraPage;
       this.profPage = ProfiloutentePage;
-    // this.platform.ready().then(() => {
-    //   this.showLoading();
-    //   // this.isLog();
-    // })
+     this.platform.ready().then(() => {
+       this.isLog();
+     })
   }
 
   inLog() {
@@ -36,8 +35,10 @@ export class HomePage {
       console.log(data);
       localStorage.setItem('user', JSON.stringify(data));
       localStorage.setItem('token', btoa(user.username + ':' + user.password));
+      this.showLoading();
       this.isLog();
       this.outProf();
+      this.loading.dismiss();
     }, err => {
       this.presentAlert3();
       console.log(err);
@@ -51,7 +52,6 @@ export class HomePage {
       if(this.trollo === 'true') {
         this.outProf();
       }
-      this.loading.dismiss();
     })
   }
 
@@ -95,5 +95,14 @@ export class HomePage {
     });
     this.loading.present();
   }
+
+  /*presentAlert4() {
+    let alert = this.alertCtrl.create({
+      title: 'Errore',
+      subTitle: 'Il server è irraggiungibile',
+      buttons: ['OK']
+    });
+    alert.present();
+  }*/
 
 }
