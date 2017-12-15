@@ -64,8 +64,8 @@
       <div [ngSwitch]="mod">
         <ion-list *ngSwitchCase="'pass'">
           <ion-item>
-            <ion-label color="primary" fixed>Nome</ion-label>
-            <ion-input type="text" [(ngModel)]="userlog.password"></ion-input>
+            <ion-label color="primary" fixed>Password</ion-label>
+            <ion-input type="text" [(ngModel)]="users" required></ion-input>
           </ion-item>
           <button ion-button (click)="inReg()">Modifica</button>
         </ion-list>

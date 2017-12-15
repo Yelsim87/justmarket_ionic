@@ -4,10 +4,10 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Storico<button ion-button icon-only [navPush]="profPage" *ngIf="trollo === 'true'">
+    <ion-title>Storico<button ion-button icon-only [navPush]="profPage">
       <ion-icon name="person"></ion-icon>
     </button>
-      <button ion-button icon-only (click)="outLog()" *ngIf="trollo === 'true'">
+      <button ion-button icon-only (click)="outLog()">
         <ion-icon name="log-out"></ion-icon>
       </button></ion-title>
   </ion-navbar>

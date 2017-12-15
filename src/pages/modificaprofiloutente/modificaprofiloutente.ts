@@ -19,6 +19,7 @@ export class ModificaprofiloutentePage {
   eemail:string='';
   pass:string='';
   cap:string='';
+  users: string = '';
 
   userlog = new Utente;
   loading: Loading;
@@ -49,6 +50,7 @@ export class ModificaprofiloutentePage {
   }
 
   inReg() {
+    this.userlog.password = this.users;
     console.log('ciao');
     console.log(this.userlog);
     console.log(this.userlog);

@@ -19,6 +19,8 @@ export class StoricoPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public nav: NavController, private loginService: LoginProvider, private alertCtrl: AlertController) {
     this.regPage = RegistraPage;
     this.profPage = ProfiloutentePage;
+    this.isLog();
+    this.outProf();
   }
 
   ionViewDidLoad() {

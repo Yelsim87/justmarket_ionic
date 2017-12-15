@@ -6,27 +6,44 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import {ListaprodottiPage} from "../pages/listaprodotti/listaprodotti";
 import {StoricoPage} from "../pages/storico/storico";
+import {LoginProvider} from "../providers/login/login";
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
-
+  trollo: string;
   rootPage: any = HomePage;
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(private loginService: LoginProvider, public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
-
+    this.isLog();
     // used for an example of ngFor and navigation
-    this.pages = [
-      { title: 'Home', component: HomePage },
-      { title: 'Prodotti', component: ListaprodottiPage },
-      { title: 'Storico', component: StoricoPage }
-    ];
 
+    if(this.trollo === 'false') {
+      this.pages = [
+        { title: 'Home', component: HomePage },
+        { title: 'Prodotti', component: ListaprodottiPage }
+      ];
+    }
+    else {
+      this.pages = [
+        { title: 'Home', component: HomePage },
+        { title: 'Prodotti', component: ListaprodottiPage },
+        { title: 'Storico', component: StoricoPage }
+      ];
+    }
+
+  }
+
+  isLog() {
+    this.loginService.isLog().subscribe(d => {
+      console.log(d);
+      this.trollo = d;
+    })
   }
 
   initializeApp() {
