@@ -40,9 +40,9 @@ export class ModificaprofiloutentePage {
       console.log(this.userlog);
       this.loginP.inMod(this.userlog).subscribe(data => {
         console.log(data);
-        this.showLoading();
+        // this.showLoading();
         this.outLog();
-        this.showLoading();
+        // this.showLoading();
         this.nav.setRoot(HomePage);
         this.presentAlert3();
       }, e => {
@@ -88,6 +88,7 @@ export class ModificaprofiloutentePage {
     this.loginService.outLog().subscribe(() => {
       localStorage.setItem('token','');
       this.isLog();
+      this.nav.setRoot(HomePage)
     }, errore => {console.log(errore);
     })
   }

@@ -21,10 +21,10 @@ export class HomePage {
   constructor(public loadingCtrl: LoadingController, public platform: Platform, public nav: NavController, private loginService: LoginProvider, private alertCtrl: AlertController) {
       this.regPage = RegistraPage;
       this.profPage = ProfiloutentePage;
-    this.platform.ready().then(() => {
-      this.showLoading();
-      this.isLog();
-    })
+    // this.platform.ready().then(() => {
+    //   this.showLoading();
+    //   // this.isLog();
+    // })
   }
 
   inLog() {
