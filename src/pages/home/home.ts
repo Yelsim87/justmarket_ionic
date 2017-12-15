@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {AlertController, NavController} from 'ionic-angular';
+import {AlertController, Loading, LoadingController, NavController, Platform} from 'ionic-angular';
 import {RegistraPage} from "../registra/registra";
 import {Utente} from "../../Utente";
 import {LoginProvider} from "../../providers/login/login";
@@ -15,13 +15,16 @@ export class HomePage {
   trollo: string = "false";
   user: string = "";
   pass: string = "";
-  userlog: Utente;
+  userlog = new Utente;
+  loading: Loading;
 
-  constructor(public nav: NavController, private loginService: LoginProvider, private alertCtrl: AlertController) {
+  constructor(public loadingCtrl: LoadingController, public platform: Platform, public nav: NavController, private loginService: LoginProvider, private alertCtrl: AlertController) {
       this.regPage = RegistraPage;
       this.profPage = ProfiloutentePage;
+    this.platform.ready().then(() => {
+      this.showLoading();
       this.isLog();
-      this.outProf();
+    })
   }
 
   inLog() {
@@ -45,6 +48,10 @@ export class HomePage {
     this.loginService.isLog().subscribe(d => {
       console.log(d);
       this.trollo = d;
+      if(this.trollo === 'true') {
+        this.outProf();
+      }
+      this.loading.dismiss();
     })
   }
 
@@ -80,6 +87,13 @@ export class HomePage {
       buttons: ['OK']
     });
     alert.present();
+  }
+
+  showLoading() {
+    this.loading = this.loadingCtrl.create({
+      content: "Caricamento..."
+    });
+    this.loading.present();
   }
 
 }

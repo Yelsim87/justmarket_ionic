@@ -1,41 +1,47 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Modifica il Profilo</ion-title>
+    <ion-title>Modifica Profilo</ion-title>
+
+    <ion-segment [(ngModel)]="mod">
+      <ion-segment-button value="per">
+        Persona
+      </ion-segment-button>
+      <ion-segment-button value="rec">
+        Recapito
+      </ion-segment-button>
+      <ion-segment-button value="pass">
+        Password
+      </ion-segment-button>
+    </ion-segment>
+
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-<ion-list>
-  <ion-item>
-    <ion-input placeholder="Nome" [(ngModel)]="nome" type="text" value="{{userlog.nome}}"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-input placeholder="Cognome" [(ngModel)]="cognome" type="text" value="{{userlog.cognome}}"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-input placeholder="Via" [(ngModel)]="via" type="text" value="{{userlog.via}}"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-input placeholder="Città" [(ngModel)]="citta" type="text" value="{{userlog.citta}}"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-input placeholder="Provincia" [(ngModel)]="provincia" type="text" value="{{userlog.provincia}}"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-input placeholder="cap" [(ngModel)]="cap" type="text" value="{{userlog.cap}}"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-input placeholder="Cellulare" [(ngModel)]="cellulare" type="text" value="{{userlog.cellulare}}"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-input placeholder="Email (username)" [(ngModel)]="eemail" type="text" value="{{userlog.username}}"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-input placeholder="Password" [(ngModel)]="password" type="text"></ion-input>
-  </ion-item>
-</ion-list>
-  <button ion-button full (click)="inReg()">Modifica Profilo</button>
+  <div [ngSwitch]="mod">
+    <ion-list *ngSwitchCase="'per'">
+      <ion-item>
+        <ion-label color="primary" fixed>Nome</ion-label>
+        <ion-input type="text" [(ngModel)]="userlog.nome"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary" fixed>Cognome</ion-label>
+        <ion-input type="text" [(ngModel)]="userlog.cognome"></ion-input>
+      </ion-item>
+      <button ion-button (click)="inMod()">Modifica</button>
+    </ion-list>
+  </div>
+    <div [ngSwitch]="mod">
+      <ion-list *ngSwitchCase="'rec'">
+        <ion-item></ion-item>
+      </ion-list>
+    </div>
+      <div [ngSwitch]="mod">
+        <ion-list *ngSwitchCase="'pass'">
+          <ion-item></ion-item>
+        </ion-list>
+  </div>
 </ion-content>
