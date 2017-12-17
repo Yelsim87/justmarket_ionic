@@ -17,6 +17,7 @@ import {ProfiloutentePage} from "../pages/profiloutente/profiloutente";
 import {ModificaprofiloutentePage} from "../pages/modificaprofiloutente/modificaprofiloutente";
 import {StoricoPage} from "../pages/storico/storico";
 import {CarrelloPage} from "../pages/carrello/carrello";
+import { ListaprodottiProvider } from '../providers/listaprodotti/listaprodotti';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import {CarrelloPage} from "../pages/carrello/carrello";
       multi: true,
     },
     SharedProvider,
-    LoginProvider
+    LoginProvider,
+    ListaprodottiProvider
   ]
 })
 export class AppModule {}

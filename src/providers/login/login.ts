@@ -35,7 +35,6 @@ export class LoginProvider {
   }
 
   outLog() {
-    console.log('qui ci sono');
     return this.http.get(indirizzo + '/logoutApp',{responseType: 'text'});
   }
 
