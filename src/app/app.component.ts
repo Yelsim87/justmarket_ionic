@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import {Nav, Platform} from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -7,21 +7,23 @@ import { HomePage } from '../pages/home/home';
 import {ListaprodottiPage} from "../pages/listaprodotti/listaprodotti";
 import {StoricoPage} from "../pages/storico/storico";
 import {LoginProvider} from "../providers/login/login";
+import {ProfiloutentePage} from "../pages/profiloutente/profiloutente";
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
-  trollo: string;
+  trollo: string = 'false';
   rootPage: any = HomePage;
+  profPage: any;
 
   pages: Array<{title: string, component: any}>;
 
   constructor(private loginService: LoginProvider, public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
     this.isLog();
-    // used for an example of ngFor and navigation
+    this.profPage = ProfiloutentePage;
 
     if(this.trollo === 'false') {
       this.pages = [
@@ -39,10 +41,23 @@ export class MyApp {
 
   }
 
+    changePage() {
+    this.nav.setRoot(ProfiloutentePage);
+  }
+
   isLog() {
     this.loginService.isLog().subscribe(d => {
       console.log(d);
       this.trollo = d;
+    })
+  }
+
+  outLog() {
+    this.loginService.outLog().subscribe(() => {
+      localStorage.setItem('token','');
+      //this.presentAlert2(this.userlog.nome);
+      this.isLog();
+    }, errore => {console.log(errore);
     })
   }
 

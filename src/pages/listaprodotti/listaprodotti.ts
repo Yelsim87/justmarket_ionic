@@ -3,6 +3,7 @@ import {AlertController, IonicPage, NavController} from 'ionic-angular';
 import {Utente} from "../../Utente";
 import {LoginProvider} from "../../providers/login/login";
 import {ProfiloutentePage} from "../profiloutente/profiloutente";
+import {CarrelloPage} from "../carrello/carrello";
 
 @IonicPage()
 @Component({
@@ -14,11 +15,13 @@ export class ListaprodottiPage {
   userlog: Utente;
   trollo: string = "false";
   profPage: any;
+  prodotti: string;
 
   constructor(public nav: NavController, private alertCtrl: AlertController, private loginService: LoginProvider) {
     this.isLog();
     this.outProf();
     this.profPage = ProfiloutentePage;
+    this.prodotti = "tot";
   }
 
   ionViewDidLoad() {
@@ -55,6 +58,10 @@ export class ListaprodottiPage {
       buttons: ['OK']
     });
     alert.present();
+  }
+
+  changePage() {
+    this.nav.setRoot(CarrelloPage);
   }
 
 }

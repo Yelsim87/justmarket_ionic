@@ -11,6 +11,14 @@
         {{p.title}}
       </button>
     </ion-list>
+    <div align="center">
+    <button ion-button icon-only (click)="changePage()" *ngIf="trollo === 'false'">
+      <ion-icon name="person"></ion-icon>
+    </button>
+    <button ion-button icon-only (click)="outLog()" *ngIf="trollo === 'false'">
+      <ion-icon name="log-out"></ion-icon>
+    </button>
+    </div>
   </ion-content>
 
 </ion-menu>

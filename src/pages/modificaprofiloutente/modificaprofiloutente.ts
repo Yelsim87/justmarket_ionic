@@ -11,20 +11,15 @@ import {HomePage} from "../home/home";
 })
 export class ModificaprofiloutentePage {
   trollo: string = "false";
-  cognome:string='';
-  citta:string='';
-  via:string='';
-  provincia:string='';
-  cell:string='';
-  eemail:string='';
   pass:string='';
-  cap:string='';
   users: string = '';
+  mod: string;
 
   userlog = new Utente;
   loading: Loading;
 
   constructor(public loadingCtrl: LoadingController, public platform: Platform, public nav: NavController, private alertCtrl: AlertController, private loginP: LoginProvider, private loginService: LoginProvider) {
+    this.mod = "per";
     this.platform.ready().then(() => {
       this.showLoading();
       this.isLog();

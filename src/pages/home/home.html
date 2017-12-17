@@ -28,7 +28,7 @@
   <button ion-button full (click)="inLog()" *ngIf="trollo === 'false'">Accedi</button>
   <ion-item *ngIf="trollo === 'true'"> Benvenuto {{userlog.nome}}!
   </ion-item>
-
-  <a [navPush]="regPage" *ngIf="trollo === 'false'">Registrati</a>
+  <div align="center">oppure</div>
+  <button ion-button full [navPush]="regPage" *ngIf="trollo === 'false'">Registrati</button>
 
 </ion-content>

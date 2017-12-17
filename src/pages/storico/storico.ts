@@ -13,7 +13,7 @@ import {Utente} from "../../Utente";
 export class StoricoPage {
   regPage: any;
   profPage: any;
-  trollo: string = 'false';
+  trollo: string;
   userlog = new Utente;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public nav: NavController, private loginService: LoginProvider, private alertCtrl: AlertController) {
