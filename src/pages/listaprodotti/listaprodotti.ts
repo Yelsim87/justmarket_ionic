@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import {AlertController, IonicPage, NavController} from 'ionic-angular';
-import {Utente} from "../../Utente";
+import {IonicPage, NavController, Loading, LoadingController, Platform} from 'ionic-angular';
 import {LoginProvider} from "../../providers/login/login";
 import {ProfiloutentePage} from "../profiloutente/profiloutente";
 import {CarrelloPage} from "../carrello/carrello";
+import {ListaprodottiProvider} from "../../providers/listaprodotti/listaprodotti";
+import {Prodotto} from "../../Prodotto";
 
 @IonicPage()
 @Component({
@@ -11,15 +12,21 @@ import {CarrelloPage} from "../carrello/carrello";
   templateUrl: 'listaprodotti.html',
 })
 export class ListaprodottiPage {
-  listap = ['banane', 'pere', 'mele'];
-  userlog: Utente;
   trollo: string = "false";
   profPage: any;
   prodotti: string;
+  li = new Array<Prodotto>();
+  pos: boolean = false;
+  loading: Loading;
+  listaSel= new Array<Prodotto>();
+  listaSell= new Array<Prodotto>();
 
-  constructor(public nav: NavController, private alertCtrl: AlertController, private loginService: LoginProvider) {
-    this.isLog();
-    this.outProf();
+  constructor(public loadingCtrl: LoadingController, public platform: Platform, private listaService: ListaprodottiProvider,public nav: NavController, private loginService: LoginProvider) {
+    this.platform.ready().then(() => {
+      this.showLoading();
+      this.outProd();
+      this.isLog();
+    })
     this.profPage = ProfiloutentePage;
     this.prodotti = "tot";
   }
@@ -28,40 +35,39 @@ export class ListaprodottiPage {
     console.log('ionViewDidLoad ListaprodottiPage');
   }
 
-  outLog() {
-    this.loginService.outLog().subscribe(() => {
-      localStorage.setItem('token','');
-      this.presentAlert2(this.userlog.nome);
-      this.isLog();
-    }, errore => {console.log(errore);
-    })
-  }
-
   isLog() {
     this.loginService.isLog().subscribe(d => {
       console.log(d);
       this.trollo = d;
+      this.loading.dismiss();
     })
-  }
-
-  outProf() {
-    this.loginService.outProf().subscribe(datiuser => {
-      console.log(datiuser);
-      this.userlog = <Utente>datiuser;
-    })
-  }
-
-  presentAlert2(a: string) {
-    let alert = this.alertCtrl.create({
-      title: 'Arrivederci, ' + a + '!',
-      subTitle: 'Log-out effettuato.',
-      buttons: ['OK']
-    });
-    alert.present();
   }
 
   changePage() {
     this.nav.setRoot(CarrelloPage);
+  }
+
+  outProd() {
+    this.listaService.outProd().subscribe(listap => {
+      this.li = <Array<Prodotto>>listap;
+      this.listaSel=this.li;
+      this.listaSell = this.li;
+      this.filtra();
+    },err => {
+      console.log(err);
+    })
+  }
+
+  filtra(){
+      this.listaSel = this.listaSel.filter(prod => prod.offerta===true );
+      this.listaSell = this.listaSell.filter(prod => prod.offerta===false );
+  }
+
+  showLoading() {
+    this.loading = this.loadingCtrl.create({
+      content: "Caricamento..."
+    });
+    this.loading.present();
   }
 
 }

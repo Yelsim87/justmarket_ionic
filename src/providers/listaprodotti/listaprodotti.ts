@@ -14,15 +14,7 @@ export class ListaprodottiProvider {
   }
 
   outProd() {
-    return this.http.get(indirizzo + '/getall', httpOptions);
-  }
-
-  outProddisp() {
-    return this.http.get(indirizzo + '/getdisponibilita', httpOptions);
-  }
-
-  inProdsu() {
-    return this.http.post(indirizzo + '/saveupdate', httpOptions);
+    return this.http.get(indirizzo + '/prodotti/getall', httpOptions);
   }
 
 }

@@ -3,15 +3,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Lista Prodotti <button ion-button icon-only [navPush]="profPage" *ngIf="trollo === 'true'">
-      <ion-icon name="person"></ion-icon>
-    </button>
-      <button ion-button icon-only (click)="changePage()" *ngIf="trollo === 'true'">
-        <ion-icon name="cart"></ion-icon>
-      </button>
-      <button ion-button icon-only (click)="outLog()" *ngIf="trollo === 'true'">
-        <ion-icon name="log-out"></ion-icon>
-      </button></ion-title>
+    <ion-title>Lista Prodotti</ion-title>
     <ion-segment [(ngModel)]="prodotti">
       <ion-segment-button value="tot">
         Prodotti
@@ -28,9 +20,46 @@
 
 
 <ion-content padding>
+
   <div [ngSwitch]="prodotti">
     <ion-list *ngSwitchCase="'tot'">
- <ion-item *ngFor="let l of listap">{{l}}</ion-item>
+      <ion-item *ngFor="let p of li">
+        <ion-thumbnail item-start>
+          <img src="{{p.img}}">
+        </ion-thumbnail>
+        <h2>{{p.nome}} {{p.marca}}</h2>
+        <p>{{p.prezzoIvato}}</p>
+        <button ion-button icon-only (click)="changePage()" *ngIf="trollo === 'true'">
+          <ion-icon name="cart"></ion-icon>
+        </button>
+      </ion-item>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'sco'">
+      <ion-item *ngFor="let p of listaSel">
+        <ion-thumbnail item-start>
+          <img src="{{p.img}}">
+        </ion-thumbnail>
+        <h2>{{p.nome}} {{p.marca}}</h2>
+        <p>{{p.prezzoIvato}}</p>
+        <button ion-button icon-only (click)="changePage()" *ngIf="trollo === 'true'">
+          <ion-icon name="cart"></ion-icon>
+        </button>
+      </ion-item>
+    </ion-list>
+
+  <ion-list *ngSwitchCase="'nsco'">
+    <ion-item *ngFor="let p of listaSell">
+      <ion-thumbnail item-start>
+        <img src="{{p.img}}">
+      </ion-thumbnail>
+      <h2>{{p.nome}} {{p.marca}}</h2>
+      <p>{{p.prezzoIvato}}</p>
+      <button ion-button icon-only (click)="changePage()" *ngIf="trollo === 'true'">
+        <ion-icon name="cart"></ion-icon>
+      </button>
+    </ion-item>
   </ion-list>
   </div>
+
 </ion-content>

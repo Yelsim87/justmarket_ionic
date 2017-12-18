@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {AlertController, Loading, LoadingController, NavController, Platform} from 'ionic-angular';
+import {AlertController, Events, Loading, LoadingController, NavController, Platform} from 'ionic-angular';
 import {RegistraPage} from "../registra/registra";
 import {Utente} from "../../Utente";
 import {LoginProvider} from "../../providers/login/login";
@@ -18,8 +18,8 @@ export class HomePage {
   userlog = new Utente;
   loading: Loading;
 
-  constructor(public loadingCtrl: LoadingController, public platform: Platform, public nav: NavController, private loginService: LoginProvider, private alertCtrl: AlertController) {
-      this.regPage = RegistraPage;
+  constructor(public event: Events, public loadingCtrl: LoadingController, public platform: Platform, public nav: NavController, private loginService: LoginProvider, private alertCtrl: AlertController) {
+    this.regPage = RegistraPage;
       this.profPage = ProfiloutentePage;
      this.platform.ready().then(() => {
        this.isLog();
@@ -38,6 +38,7 @@ export class HomePage {
       this.showLoading();
       this.isLog();
       this.outProf();
+      this.event.publish("loggo");
       this.loading.dismiss();
     }, err => {
       this.presentAlert3();
@@ -49,18 +50,10 @@ export class HomePage {
     this.loginService.isLog().subscribe(d => {
       console.log(d);
       this.trollo = d;
+      this.event.publish("loggo");
       if(this.trollo === 'true') {
         this.outProf();
       }
-    })
-  }
-
-  outLog() {
-    this.loginService.outLog().subscribe(() => {
-      localStorage.setItem('token','');
-      this.presentAlert2(this.userlog.nome);
-      this.isLog();
-    }, errore => {console.log(errore);
     })
   }
 
@@ -69,15 +62,6 @@ export class HomePage {
       console.log(datiuser);
       this.userlog = <Utente>datiuser;
       })
-  }
-
-  presentAlert2(a: string) {
-    let alert = this.alertCtrl.create({
-      title: 'Arrivederci, ' + a + '!',
-      subTitle: 'Log-out effettuato.',
-      buttons: ['OK']
-    });
-    alert.present();
   }
 
   presentAlert3() {
@@ -95,14 +79,5 @@ export class HomePage {
     });
     this.loading.present();
   }
-
-  /*presentAlert4() {
-    let alert = this.alertCtrl.create({
-      title: 'Errore',
-      subTitle: 'Il server è irraggiungibile',
-      buttons: ['OK']
-    });
-    alert.present();
-  }*/
 
 }
