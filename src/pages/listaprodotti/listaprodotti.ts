@@ -59,6 +59,7 @@ export class ListaprodottiPage {
   filtra(){
       this.listaFiltrataOfferte = this.listaProdottiTotale.filter(prod => prod.offerta===true );
       this.listaFiltrataSenzaOfferte = this.listaProdottiTotale.filter(prod => prod.offerta===false );
+      this.listaTotaleFiltrata=this.listaProdottiTotale
       //this.filtraS();
   }
 
@@ -66,6 +67,7 @@ export class ListaprodottiPage {
   filtraT() {
     this.listaFiltrataOfferte=this.listaProdottiTotale
     this.listaFiltrataSenzaOfferte=this.listaProdottiTotale
+    this.listaTotaleFiltrata=this.listaProdottiTotale
 
     if(this.cerca != '') {
       this.listaFiltrataOfferte = this.listaFiltrataOfferte.filter(prod =>
@@ -90,6 +92,7 @@ export class ListaprodottiPage {
   }
 
   aggiungiAlCarrello(prod:Prodotto) {
+    console.log(prod)
     let id:number=0;
     let x:number=0;
     let control:boolean;
@@ -114,23 +117,7 @@ export class ListaprodottiPage {
     }
     console.log(this.listaProdottiCarrello);
      console.log("prodotto aggiunto");
-    /*swal({
 
-      title: 'Prodotto aggiunto al carrello!',
-
-      type: 'success',
-
-      showConfirmButton: false,
-
-      timer: 1000,
-
-      onOpen: () => {
-
-        swal.showLoading()
-
-      }
-
-    });*/
     localStorage.setItem('carrello',JSON.stringify(this.listaProdottiCarrello));
   }
 
