@@ -16,10 +16,10 @@ export class ListaprodottiPage {
   profPage: any;
   prodotti: string;
   li = new Array<Prodotto>();
-  pos: boolean = false;
   loading: Loading;
   listaSel= new Array<Prodotto>();
   listaSell= new Array<Prodotto>();
+  cerca: string = '';
 
   constructor(public loadingCtrl: LoadingController, public platform: Platform, private listaService: ListaprodottiProvider,public nav: NavController, private loginService: LoginProvider) {
     this.platform.ready().then(() => {
@@ -61,6 +61,12 @@ export class ListaprodottiPage {
   filtra(){
       this.listaSel = this.listaSel.filter(prod => prod.offerta===true );
       this.listaSell = this.listaSell.filter(prod => prod.offerta===false );
+  }
+
+  filtraS() {
+    this.listaSel = this.listaSel.filter(prod =>
+      prod.marca.toLowerCase().includes(this.cerca.toLowerCase())||prod.nome.toLowerCase().includes(this.cerca.toLowerCase())
+    );
   }
 
   showLoading() {
