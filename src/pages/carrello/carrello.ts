@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
 import {ListaprodottiPage} from "../listaprodotti/listaprodotti";
 import {LoginProvider} from "../../providers/login/login";
+import {Prodotto} from "../../Prodotto";
 
 @IonicPage()
 @Component({
@@ -9,26 +10,22 @@ import {LoginProvider} from "../../providers/login/login";
   templateUrl: 'carrello.html',
 })
 export class CarrelloPage {
-  trollo: string = 'false';
-  listPage: any;
+  listaCarrello: Array<Prodotto> = new Array();
 
   constructor(public nav: NavController, private loginService: LoginProvider) {
-    this.isLog();
+   this.getLista();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CarrelloPage');
   }
 
-  isLog() {
-    this.loginService.isLog().subscribe(d => {
-      console.log(d);
-      this.trollo = d;
-    })
-  }
-
-  changePage() {
-    this.nav.setRoot(ListaprodottiPage);
+  getLista() {
+    if (JSON.parse(localStorage.getItem('carrello')) === null) {
+      localStorage.setItem('carrello', JSON.stringify(this.listaCarrello));
+    }
+    this.listaCarrello = JSON.parse(localStorage.getItem('carrello'));
+    console.log('nel carrello' + this.listaCarrello.toString());
   }
 
 }

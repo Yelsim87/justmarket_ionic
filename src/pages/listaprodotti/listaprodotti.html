@@ -24,15 +24,16 @@
   <div [ngSwitch]="prodotti">
 
     <ion-list *ngSwitchCase="'tot'">
+      <ion-searchbar (ionInput)="filtraT($event)"></ion-searchbar>
       <ion-item *ngFor="let p of li">
         <ion-thumbnail item-start>
           <img src="{{p.img}}">
         </ion-thumbnail>
-        <h2>{{p.nome}} {{p.marca}}</h2>
-        <p>{{p.prezzoIvato}}</p>
-        <button ion-button icon-only (click)="changePage()" *ngIf="trollo === 'true'">
-          <ion-icon name="cart"></ion-icon>
-        </button>
+        <h2>{{p.nome}} {{p.marca}}
+        <p>Prezzo: {{p.prezzoIvato}}</p>
+        <p>Quantità disponibile: {{p.quantita}}</p>
+          <button ion-button full icon-only (click)="aggiungiAlCarrello(p)" *ngIf="trollo === 'true'">
+            <ion-icon name="add"></ion-icon></button></h2>
       </ion-item>
     </ion-list>
 
