@@ -17,8 +17,10 @@ export class ListaprodottiPage {
   prodotti: string;
   li = new Array<Prodotto>();
   loading: Loading;
-  listaSel= new Array<Prodotto>();
-  listaSell= new Array<Prodotto>();
+  listaProdottiTotale = new Array<Prodotto>();
+  listaFiltrataSenzaOfferte= new Array<Prodotto>();
+  listaFiltrataOfferte= new Array<Prodotto>();
+  listaTotaleFiltrata= new Array<Prodotto>();
   cerca: string = '';
   cercaa: string = '' ;
   listaProdottiCarrello = new Array<Prodotto>();
@@ -47,46 +49,38 @@ export class ListaprodottiPage {
 
   outProd() {
     this.listaService.outProd().subscribe(listap => {
-      this.li = <Array<Prodotto>>listap;
-      this.listaSel=this.li;
-      this.listaSell = this.li;
+      this.listaProdottiTotale=<Array<Prodotto>>listap;
       this.filtra();
     },err => {
       console.log(err);
     })
   }
 
-  outProd1() {
-    this.listaService.outProd().subscribe(listap => {
-      this.li = <Array<Prodotto>>listap;
-    },err => {
-      console.log(err);
-    })
-  }
-
   filtra(){
-      this.listaSel = this.listaSel.filter(prod => prod.offerta===true );
-      this.listaSell = this.listaSell.filter(prod => prod.offerta===false );
+      this.listaFiltrataOfferte = this.listaProdottiTotale.filter(prod => prod.offerta===true );
+      this.listaFiltrataSenzaOfferte = this.listaProdottiTotale.filter(prod => prod.offerta===false );
       //this.filtraS();
   }
 
-  /*filtraS() {
-    this.listaSel = this.listaSel.filter(prod =>
-      prod.marca.toLowerCase().includes(this.cerca.toLowerCase())||prod.nome.toLowerCase().includes(this.cerca.toLowerCase())
-    );
-  }*/
 
-  filtraT(ev: any) {
-    this.outProd1();
-    let val = ev.srcElement.value;
-    if(val && val.toString() != '') {
-      this.li = this.li.filter(p => {
-        return(p.marca.toLowerCase().indexOf(val.toLowerCase())>-1)/*|| p.nome.toLowerCase().indexOf(val.toLowerCase()) > -1*/;
-      }
-        //p.marca.toLowerCase().includes(this.cercaa.toLowerCase())||p.nome.toLowerCase().includes(this.cercaa.toLowerCase())
-      );
+  filtraT() {
+    this.listaFiltrataOfferte=this.listaProdottiTotale
+    this.listaFiltrataSenzaOfferte=this.listaProdottiTotale
+
+    if(this.cerca != '') {
+      this.listaFiltrataOfferte = this.listaFiltrataOfferte.filter(prod =>
+        prod.marca.toLowerCase().includes(this.cerca.toLowerCase())||prod.nome.toLowerCase().includes(this.cerca.toLowerCase()))
+
+
+        this.listaFiltrataSenzaOfferte = this.listaFiltrataSenzaOfferte.filter(prod =>
+          prod.marca.toLowerCase().includes(this.cerca.toLowerCase())||prod.nome.toLowerCase().includes(this.cerca.toLowerCase()))
+
+      this.listaTotaleFiltrata = this.listaTotaleFiltrata.filter(prod =>
+        prod.marca.toLowerCase().includes(this.cerca.toLowerCase())||prod.nome.toLowerCase().includes(this.cerca.toLowerCase()))
+      };
+
     }
-  }
+
 
   showLoading() {
     this.loading = this.loadingCtrl.create({
