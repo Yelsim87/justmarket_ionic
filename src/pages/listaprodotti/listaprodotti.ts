@@ -56,6 +56,14 @@ export class ListaprodottiPage {
     })
   }
 
+  outProd1() {
+    this.listaService.outProd().subscribe(listap => {
+      this.li = <Array<Prodotto>>listap;
+    },err => {
+      console.log(err);
+    })
+  }
+
   filtra(){
       this.listaSel = this.listaSel.filter(prod => prod.offerta===true );
       this.listaSell = this.listaSell.filter(prod => prod.offerta===false );
@@ -69,8 +77,8 @@ export class ListaprodottiPage {
   }*/
 
   filtraT(ev: any) {
-    this.outProd();
-    let val = ev.target.value;
+    this.outProd1();
+    let val = ev.srcElement.value;
     if(val && val.toString() != '') {
       this.li = this.li.filter(p => {
         return(p.marca.toLowerCase().indexOf(val.toLowerCase())>-1)/*|| p.nome.toLowerCase().indexOf(val.toLowerCase()) > -1*/;
