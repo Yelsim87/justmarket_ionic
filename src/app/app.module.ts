@@ -18,6 +18,8 @@ import {ModificaprofiloutentePage} from "../pages/modificaprofiloutente/modifica
 import {StoricoPage} from "../pages/storico/storico";
 import {CarrelloPage} from "../pages/carrello/carrello";
 import { ListaprodottiProvider } from '../providers/listaprodotti/listaprodotti';
+import { StoricoJmProvider } from '../providers/storico-jm/storico-jm';
+import { TransizioniProvider } from '../providers/transizioni/transizioni';
 
 @NgModule({
   declarations: [
@@ -58,7 +60,9 @@ import { ListaprodottiProvider } from '../providers/listaprodotti/listaprodotti'
     },
     SharedProvider,
     LoginProvider,
-    ListaprodottiProvider
+    ListaprodottiProvider,
+    StoricoJmProvider,
+    TransizioniProvider
   ]
 })
 export class AppModule {}
