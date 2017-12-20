@@ -1,25 +1,30 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="secondary">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>Lista Prodotti</ion-title>
   </ion-navbar>
 </ion-header>
-<ion-fab top right>
-  <button ion-fab mini (click)="showCheckbox()"><ion-icon name="add"></ion-icon></button>
+<ion-fab bottom right>
+  <button ion-fab mini (click)="showCheckbox()"><ion-icon ios="ios-funnel" md="md-funnel"></ion-icon></button>
 </ion-fab>
 
 <ion-content padding>
 
+
   <ion-list>
     <ion-item *ngFor="let prod of listaTotaleFiltrata">
+
       <ion-thumbnail item-start>
         <img src="{{prod.img}}">
       </ion-thumbnail>
-      <h2>{{prod.marca}} {{prod.nome}}</h2>
-      <p>{{prod.prezzoUnitario}}</p>
-      <button ion-button clear item-end>View</button>
+      <h2><strong>{{prod.marca}}</strong></h2>
+      <h5>{{prod.nome}}</h5>
+      <p *ngIf="prod.quantita>0">{{prod.prezzoUnitario}}€</p>
+      <p *ngIf="prod.quantita==0"><strong>Terminato</strong></p>
+
+      <button ion-button (tap)="aggiungiAlCarrello(prod)" clear item-end><img width=20px src="assets/images/shopping.png"></button>
     </ion-item>
   </ion-list>
 
