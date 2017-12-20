@@ -25,6 +25,7 @@ export class MyApp {
     this.initializeApp();
     this.platform.ready().then(() => {
       this.showLoading();
+      this.isLog();
       this.changeMenu();
     })
   }
@@ -32,7 +33,7 @@ export class MyApp {
     changePage() {
     this.nav.push(ProfiloutentePage);
       this.menuCtrl.close();
-      // this.loading.dismiss();
+      //this.loading.dismiss();
     }
 
   isLog() {
@@ -40,7 +41,6 @@ export class MyApp {
       this.trollo = d;
       console.log("stiamo nella home: " + d);
       this.changeMenu();
-      this.loading.dismiss();
     })
   }
 
@@ -75,7 +75,6 @@ export class MyApp {
     this.loading = this.loadingCtrl.create({
       content: "Caricamento..."
     });
-    this.loading.present();
   }
 
   changeMenu() {
@@ -100,6 +99,5 @@ export class MyApp {
   openPage(page) {
     this.nav.setRoot(page.component);
     this.loading.dismiss();
-
   }
 }
