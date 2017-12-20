@@ -28,7 +28,6 @@ export class MyApp {
     this.platform.ready().then(() => {
       this.showLoading();
       this.isLog();
-      this.changeMenu();
     })
   }
 
@@ -42,7 +41,6 @@ export class MyApp {
       this.trollo = d;
       console.log("stiamo nella home: " + d);
       this.changeMenu();
-      this.loading.dismiss();
     })
   }
 
@@ -91,8 +89,6 @@ export class MyApp {
 
     if(this.trollo === 'true') {
       this.pages = [
-        { title: 'Prodotti', component: ProductListPage },
-        { title: 'Home', component: HomePage },
         { title: 'Prodotti', component: ProductListPage },
         { title: 'Carrello', component: CarrelloPage },
         { title: 'Storico', component: StoricoPage },
