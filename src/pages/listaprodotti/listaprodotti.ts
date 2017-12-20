@@ -15,14 +15,12 @@ export class ListaprodottiPage {
   trollo: string = "false";
   profPage: any;
   prodotti: string;
-  li = new Array<Prodotto>();
   loading: Loading;
   listaProdottiTotale = new Array<Prodotto>();
   listaFiltrataSenzaOfferte= new Array<Prodotto>();
   listaFiltrataOfferte= new Array<Prodotto>();
   listaTotaleFiltrata= new Array<Prodotto>();
   cerca: string = '';
-  cercaa: string = '' ;
   listaProdottiCarrello = new Array<Prodotto>();
 
   constructor(public loadingCtrl: LoadingController, public platform: Platform, private listaService: ListaprodottiProvider,public nav: NavController, private loginService: LoginProvider) {

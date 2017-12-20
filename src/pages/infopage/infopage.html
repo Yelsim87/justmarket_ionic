@@ -1,0 +1,22 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Info</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+ <h2>Transazione</h2>
+ <p>Numero Carta: {{lol.numeroCarta}}<br>
+  Prezzo Ivato: {{lol.prezzoIva}}<br>
+   Data Transazione: {{lol.data}}
+ </p>
+  <h2>Prodotto/i</h2>
+  <p *ngFor="let z of lol.listaProdotti">
+    Nome Prodotto: {{z.nome}}<br>
+    Marca Prodotto: {{z.marca}}<br>
+    Quantità: {{z.quantitaDaAcquistare}}
+  </p>
+</ion-content>

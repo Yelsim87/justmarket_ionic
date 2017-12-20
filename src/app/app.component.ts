@@ -9,6 +9,7 @@ import {LoginProvider} from "../providers/login/login";
 import {ProfiloutentePage} from "../pages/profiloutente/profiloutente";
 import {CarrelloPage} from "../pages/carrello/carrello";
 import {ProductListPage} from "../pages/product-list/product-list";
+import {TransizioniPage} from "../pages/transizioni/transizioni";
 
 @Component({
   templateUrl: 'app.html'
@@ -89,9 +90,10 @@ export class MyApp {
     if(this.trollo === 'true') {
       this.pages = [
         { title: 'Home', component: HomePage },
-        { title: 'Prodotti', component: ListaprodottiPage },
+        { title: 'Prodotti', component: ProductListPage },
         { title: 'Carrello', component: CarrelloPage },
-        { title: 'Storico', component: StoricoPage }
+        { title: 'Storico', component: StoricoPage },
+        { title: 'Transizioni', component: TransizioniPage }
       ];
     }
   }

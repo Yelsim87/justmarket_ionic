@@ -18,11 +18,10 @@ import {ModificaprofiloutentePage} from "../pages/modificaprofiloutente/modifica
 import {StoricoPage} from "../pages/storico/storico";
 import {CarrelloPage} from "../pages/carrello/carrello";
 import { ListaprodottiProvider } from '../providers/listaprodotti/listaprodotti';
-import { StoricoJmProvider } from '../providers/storico-jm/storico-jm';
-import { TransizioniProvider } from '../providers/transizioni/transizioni';
 import {ProductListPage} from "../pages/product-list/product-list";
-import { StoricoJmProvider } from '../providers/storico-jm/storico-jm';
-import { TransizioniProvider } from '../providers/transizioni/transizioni';
+import {TransizioniPage} from "../pages/transizioni/transizioni";
+import {TransizioniProvider} from "../providers/transizioni/transizioni";
+import {InfopagePage} from "../pages/infopage/infopage";
 
 @NgModule({
   declarations: [
@@ -34,6 +33,8 @@ import { TransizioniProvider } from '../providers/transizioni/transizioni';
     StoricoPage,
     ListaprodottiPage,
     CarrelloPage,
+    TransizioniPage,
+    InfopagePage,
     ProductListPage
   ],
   imports: [
@@ -51,6 +52,8 @@ import { TransizioniProvider } from '../providers/transizioni/transizioni';
     StoricoPage,
     ListaprodottiPage,
     CarrelloPage,
+    TransizioniPage,
+    InfopagePage,
     ProductListPage
   ],
   providers: [
@@ -66,7 +69,6 @@ import { TransizioniProvider } from '../providers/transizioni/transizioni';
     SharedProvider,
     LoginProvider,
     ListaprodottiProvider,
-    StoricoJmProvider,
     TransizioniProvider
   ]
 })
