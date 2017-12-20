@@ -60,7 +60,9 @@ export class ListaprodottiPage {
     this.listaFiltrataOfferte = this.listaProdottiTotale.filter(prod => prod.offerta===true );
     this.listaFiltrataSenzaOfferte = this.listaProdottiTotale.filter(prod => prod.offerta===false );
     this.listaTotaleFiltrata=this.listaProdottiTotale
-    //this.filtraS();
+      this.listaFiltrataOfferte = this.listaProdottiTotale.filter(prod => prod.offerta===true );
+      this.listaFiltrataSenzaOfferte = this.listaProdottiTotale.filter(prod => prod.offerta===false );
+      this.listaTotaleFiltrata=this.listaProdottiTotale
   }
 
 
@@ -115,8 +117,6 @@ export class ListaprodottiPage {
     else {
       this.listaProdottiCarrello.push(prod);
     }
-    console.log(this.listaProdottiCarrello);
-    console.log("prodotto aggiunto");
 
     localStorage.setItem('carrello',JSON.stringify(this.listaProdottiCarrello));
   }
