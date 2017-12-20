@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import {IonicPage, NavController, Loading, LoadingController, Platform, AlertController} from 'ionic-angular';
+import {
+  IonicPage, NavController, Loading, LoadingController, Platform, AlertController,
+  ToastController
+} from 'ionic-angular';
 import {LoginProvider} from "../../providers/login/login";
 import {ProfiloutentePage} from "../profiloutente/profiloutente";
 import {ListaprodottiProvider} from "../../providers/listaprodotti/listaprodotti";
@@ -35,13 +38,18 @@ export class ProductListPage {
   midPrice:boolean=true;
   highPrice:boolean=true;
 
-  constructor(public loadingCtrl: LoadingController, public platform: Platform, private listaService: ListaprodottiProvider,public nav: NavController, private loginService: LoginProvider,public alertCtrl: AlertController) {
+
+  constructor(public toastCtrl: ToastController,public loadingCtrl: LoadingController, public platform: Platform, private listaService: ListaprodottiProvider,public nav: NavController, private loginService: LoginProvider,public alertCtrl: AlertController) {
     this.platform.ready().then(() => {
       this.showLoading();
       this.outProd();
       this.filtraT()
       this.isLog();
     })
+    if (localStorage.getItem('carrello') == null) {
+      console.log("qui")
+      localStorage.setItem('carrello', JSON.stringify(new Array()));
+    }
     this.profPage = ProfiloutentePage;
     this.prodotti = "tot";
   }
@@ -71,6 +79,7 @@ export class ProductListPage {
 
 
   filtraT() {
+
       this.listaTotaleFiltrata=new Array()
     if(this.lowPrice)
       this.listaTotaleFiltrata = this.listaProdottiTotale.filter(prod => prod.prezzoUnitario>0 && prod.prezzoUnitario<=2 );
@@ -83,6 +92,12 @@ export class ProductListPage {
 
     if(!this.lowPrice&&!this.midPrice&&!this.highPrice)
       this.listaTotaleFiltrata=this.listaProdottiTotale
+
+    if(this.cerca != '') {
+      this.listaTotaleFiltrata = this.listaTotaleFiltrata.filter(prod =>
+        prod.marca.toLowerCase().includes(this.cerca.toLowerCase())||prod.nome.toLowerCase().includes(this.cerca.toLowerCase()))
+
+    };
 
     if(this.offerte)
       this.listaTotaleFiltrata = this.listaTotaleFiltrata.filter(prod => prod.offerta===true);
@@ -106,6 +121,10 @@ export class ProductListPage {
   }
 
   aggiungiAlCarrello(prod:Prodotto) {
+    let toast = this.toastCtrl.create({
+      message: 'Prodotto aggiunto al carrelo!',
+      duration: 3000
+    });
     console.log(prod)
     let id:number=0;
     let x:number=0;
@@ -114,6 +133,7 @@ export class ProductListPage {
       localStorage.setItem('carrello', JSON.stringify(this.carrello));
     }
     this.listaProdottiCarrello=<Array<Prodotto>>JSON.parse(localStorage.getItem("carrello")  );
+    console.log(this.listaProdottiCarrello)
     prod.quantitaDaAcquistare=1;
     for(let p of this.listaProdottiCarrello){
       if(p.id===prod.id) {
@@ -133,6 +153,7 @@ export class ProductListPage {
     console.log("prodotto aggiunto");
 
     localStorage.setItem('carrello',JSON.stringify(this.listaProdottiCarrello));
+    toast.present();
   }
 
   showCheckbox() {

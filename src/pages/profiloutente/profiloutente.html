@@ -1,7 +1,7 @@
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>Profilo Utente</ion-title>
+  <ion-navbar color="secondary">
+    <ion-title class="titleicon5">Just Market</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -32,9 +32,6 @@
   </ion-item>
   <ion-item *ngIf="trollo === 'true'">
     Email (username): {{userlog.username}}
-  </ion-item>
-  <ion-item *ngIf="trollo === 'true'">
-    Password: {{userlog.password}}
   </ion-item>
 </ion-list>
   <button ion-button full *ngIf="trollo === 'true'" [navPush]="modPage">Modifica profilo</button>

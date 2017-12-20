@@ -1,29 +1,28 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="secondary">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
+    <ion-title class="titleicon2">Just Market</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h3 *ngIf="trollo === 'false'">Login</h3>
+  <h3 *ngIf="trollo === 'false'" class="textClass">Login</h3>
 
   <ion-item *ngIf="trollo === 'false'">
-    <ion-label fixed>Email</ion-label>
+    <ion-label fixed class="textClass">Email</ion-label>
     <ion-input type="text" [(ngModel)]="user"></ion-input>
   </ion-item>
 
   <ion-item *ngIf="trollo === 'false'">
-    <ion-label fixed>Password</ion-label>
+    <ion-label fixed class="textClass">Password</ion-label>
     <ion-input type="password" [(ngModel)]="pass"></ion-input>
   </ion-item>
 
-  <button ion-button full (click)="inLog()" *ngIf="trollo === 'false'">Accedi</button>
-  <ion-item *ngIf="trollo === 'true'"> Benvenuto {{userlog.nome}}!
-  </ion-item>
-  <div align="center" *ngIf="trollo === 'false'">oppure</div>
-  <button ion-button full [navPush]="regPage" *ngIf="trollo === 'false'">Registrati</button>
+  <div class="spazio"></div>
+  <button ion-button full (click)="inLog()" *ngIf="trollo === 'false'" class="boxShad">Accedi</button>
+  <div class="spazio"></div>
+  <button ion-button full [navPush]="regPage" *ngIf="trollo === 'false'" class="boxShad">Registrati</button>
 
 </ion-content>

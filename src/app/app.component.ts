@@ -17,7 +17,7 @@ import {TransizioniPage} from "../pages/transizioni/transizioni";
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
   trollo: string = 'false';
-  rootPage: any = HomePage;
+  rootPage: any = ProductListPage;
   loading: Loading;
 
   pages: Array<{title: string, component: any}>;
@@ -27,6 +27,7 @@ export class MyApp {
     this.initializeApp();
     this.platform.ready().then(() => {
       this.showLoading();
+      this.isLog();
       this.changeMenu();
     })
   }
@@ -87,8 +88,10 @@ export class MyApp {
         { title: 'Prodotti', component: ProductListPage }
       ];
     }
+
     if(this.trollo === 'true') {
       this.pages = [
+        { title: 'Prodotti', component: ProductListPage },
         { title: 'Home', component: HomePage },
         { title: 'Prodotti', component: ProductListPage },
         { title: 'Carrello', component: CarrelloPage },
@@ -96,9 +99,11 @@ export class MyApp {
         { title: 'Transizioni', component: TransizioniPage }
       ];
     }
+    this.loading.dismiss();
   }
 
   openPage(page) {
     this.nav.setRoot(page.component);
+    this.loading.dismiss();
   }
 }

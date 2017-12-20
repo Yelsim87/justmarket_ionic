@@ -19,6 +19,9 @@ import {StoricoPage} from "../pages/storico/storico";
 import {CarrelloPage} from "../pages/carrello/carrello";
 import { ListaprodottiProvider } from '../providers/listaprodotti/listaprodotti';
 import {ProductListPage} from "../pages/product-list/product-list";
+import {StoricoJmProvider} from "../providers/storico-jm/storico-jm";
+import {TransizioniProvider} from "../providers/transizioni/transizioni";
+import {CreditCardProvider} from "../providers/credit-card/credit-card";
 import {TransizioniPage} from "../pages/transizioni/transizioni";
 import {TransizioniProvider} from "../providers/transizioni/transizioni";
 import {InfopagePage} from "../pages/infopage/infopage";
@@ -70,6 +73,9 @@ import {InfopagePage} from "../pages/infopage/infopage";
     LoginProvider,
     ListaprodottiProvider,
     TransizioniProvider
+    StoricoJmProvider,
+    TransizioniProvider,
+    CreditCardProvider
   ]
 })
 export class AppModule {}

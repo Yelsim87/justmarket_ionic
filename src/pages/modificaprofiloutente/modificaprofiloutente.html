@@ -1,22 +1,20 @@
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>Modifica Profilo</ion-title>
-
-    <ion-segment [(ngModel)]="mod">
-      <ion-segment-button value="per">
-        Persona
-      </ion-segment-button>
-      <ion-segment-button value="rec">
-        Recapito
-      </ion-segment-button>
-      <ion-segment-button value="pass">
-        Password
-      </ion-segment-button>
-    </ion-segment>
-
+  <ion-navbar color="secondary">
+    <ion-title class="titleicon3">Just Market</ion-title>
   </ion-navbar>
 
+  <ion-segment [(ngModel)]="mod">
+    <ion-segment-button value="per">
+      Utente
+    </ion-segment-button>
+    <ion-segment-button value="rec">
+      Recapito
+    </ion-segment-button>
+    <ion-segment-button value="pass">
+      Password
+    </ion-segment-button>
+  </ion-segment>
 </ion-header>
 
 
@@ -67,7 +65,7 @@
             <ion-label color="primary" fixed>Password</ion-label>
             <ion-input type="text" [(ngModel)]="users" required></ion-input>
           </ion-item>
-          <button ion-button (click)="inReg()">Modifica</button>
+          <button ion-button full (click)="inReg()">Modifica</button>
         </ion-list>
   </div>
 </ion-content>
