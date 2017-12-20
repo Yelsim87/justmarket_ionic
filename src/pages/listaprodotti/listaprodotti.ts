@@ -57,10 +57,12 @@ export class ListaprodottiPage {
   }
 
   filtra(){
+    this.listaFiltrataOfferte = this.listaProdottiTotale.filter(prod => prod.offerta===true );
+    this.listaFiltrataSenzaOfferte = this.listaProdottiTotale.filter(prod => prod.offerta===false );
+    this.listaTotaleFiltrata=this.listaProdottiTotale
       this.listaFiltrataOfferte = this.listaProdottiTotale.filter(prod => prod.offerta===true );
       this.listaFiltrataSenzaOfferte = this.listaProdottiTotale.filter(prod => prod.offerta===false );
       this.listaTotaleFiltrata=this.listaProdottiTotale
-      //this.filtraS();
   }
 
 
@@ -74,14 +76,14 @@ export class ListaprodottiPage {
         prod.marca.toLowerCase().includes(this.cerca.toLowerCase())||prod.nome.toLowerCase().includes(this.cerca.toLowerCase()))
 
 
-        this.listaFiltrataSenzaOfferte = this.listaFiltrataSenzaOfferte.filter(prod =>
-          prod.marca.toLowerCase().includes(this.cerca.toLowerCase())||prod.nome.toLowerCase().includes(this.cerca.toLowerCase()))
+      this.listaFiltrataSenzaOfferte = this.listaFiltrataSenzaOfferte.filter(prod =>
+        prod.marca.toLowerCase().includes(this.cerca.toLowerCase())||prod.nome.toLowerCase().includes(this.cerca.toLowerCase()))
 
       this.listaTotaleFiltrata = this.listaTotaleFiltrata.filter(prod =>
         prod.marca.toLowerCase().includes(this.cerca.toLowerCase())||prod.nome.toLowerCase().includes(this.cerca.toLowerCase()))
-      };
+    };
 
-    }
+  }
 
 
   showLoading() {
@@ -115,8 +117,6 @@ export class ListaprodottiPage {
     else {
       this.listaProdottiCarrello.push(prod);
     }
-    console.log(this.listaProdottiCarrello);
-     console.log("prodotto aggiunto");
 
     localStorage.setItem('carrello',JSON.stringify(this.listaProdottiCarrello));
   }

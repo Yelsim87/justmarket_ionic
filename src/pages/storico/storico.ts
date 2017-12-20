@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {IonicPage} from 'ionic-angular';
-import {LoginProvider} from "../../providers/login/login";
+import {Transazione} from "../../Transazione";
+import {TransizioniProvider} from "../../providers/transizioni/transizioni";
 
 @IonicPage()
 @Component({
@@ -9,20 +10,18 @@ import {LoginProvider} from "../../providers/login/login";
 })
 export class StoricoPage {
   trollo: string;
+  listaTransazioni = new Array<Transazione>();
 
-  constructor(private loginService: LoginProvider) {
-    this.isLog();
+  constructor(private transService: TransizioniProvider) {
+    this.getAllTransazioni();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad StoricoPage');
   }
 
-  isLog() {
-    this.loginService.isLog().subscribe(d => {
-      console.log(d);
-      this.trollo = d;
-    })
+  getAllTransazioni() {
+    this.transService.getAll().subscribe(d => this.listaTransazioni = <Array<Transazione>>d);
   }
 
 }
