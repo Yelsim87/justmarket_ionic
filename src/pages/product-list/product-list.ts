@@ -38,6 +38,7 @@ export class ProductListPage {
   midPrice:boolean=true;
   highPrice:boolean=true;
 
+
   constructor(public toastCtrl: ToastController,public loadingCtrl: LoadingController, public platform: Platform, private listaService: ListaprodottiProvider,public nav: NavController, private loginService: LoginProvider,public alertCtrl: AlertController) {
     this.platform.ready().then(() => {
       this.showLoading();
@@ -78,6 +79,7 @@ export class ProductListPage {
 
 
   filtraT() {
+
       this.listaTotaleFiltrata=new Array()
     if(this.lowPrice)
       this.listaTotaleFiltrata = this.listaProdottiTotale.filter(prod => prod.prezzoUnitario>0 && prod.prezzoUnitario<=2 );
@@ -90,6 +92,12 @@ export class ProductListPage {
 
     if(!this.lowPrice&&!this.midPrice&&!this.highPrice)
       this.listaTotaleFiltrata=this.listaProdottiTotale
+
+    if(this.cerca != '') {
+      this.listaTotaleFiltrata = this.listaTotaleFiltrata.filter(prod =>
+        prod.marca.toLowerCase().includes(this.cerca.toLowerCase())||prod.nome.toLowerCase().includes(this.cerca.toLowerCase()))
+
+    };
 
     if(this.offerte)
       this.listaTotaleFiltrata = this.listaTotaleFiltrata.filter(prod => prod.offerta===true);
