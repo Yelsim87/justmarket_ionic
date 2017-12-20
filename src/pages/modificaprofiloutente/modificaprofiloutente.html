@@ -6,7 +6,7 @@
 
   <ion-segment [(ngModel)]="mod">
     <ion-segment-button value="per">
-      Persona
+      Utente
     </ion-segment-button>
     <ion-segment-button value="rec">
       Recapito
@@ -65,7 +65,7 @@
             <ion-label color="primary" fixed>Password</ion-label>
             <ion-input type="text" [(ngModel)]="users" required></ion-input>
           </ion-item>
-          <button ion-button (click)="inReg()">Modifica</button>
+          <button ion-button full (click)="inReg()">Modifica</button>
         </ion-list>
   </div>
 </ion-content>
