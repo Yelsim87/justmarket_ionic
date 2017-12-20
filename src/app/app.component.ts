@@ -3,7 +3,6 @@ import {Nav, Platform, LoadingController, Loading, Events, MenuController, Alert
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
-import {ListaprodottiPage} from "../pages/listaprodotti/listaprodotti";
 import {StoricoPage} from "../pages/storico/storico";
 import {LoginProvider} from "../providers/login/login";
 import {ProfiloutentePage} from "../pages/profiloutente/profiloutente";
@@ -16,7 +15,7 @@ import {ProductListPage} from "../pages/product-list/product-list";
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
   trollo: string = 'false';
-  rootPage: any = HomePage;
+  rootPage: any = ProductListPage;
   loading: Loading;
 
   pages: Array<{title: string, component: any}>;
@@ -33,7 +32,8 @@ export class MyApp {
     changePage() {
     this.nav.push(ProfiloutentePage);
       this.menuCtrl.close();
-  }
+      // this.loading.dismiss();
+    }
 
   isLog() {
     this.loginService.isLog().subscribe(d => {
@@ -86,17 +86,20 @@ export class MyApp {
         { title: 'Prodotti', component: ProductListPage }
       ];
     }
+
     if(this.trollo === 'true') {
       this.pages = [
-        { title: 'Home', component: HomePage },
-        { title: 'Prodotti', component: ListaprodottiPage },
+        { title: 'Prodotti', component: ProductListPage },
         { title: 'Carrello', component: CarrelloPage },
         { title: 'Storico', component: StoricoPage }
       ];
     }
+    this.loading.dismiss();
   }
 
   openPage(page) {
     this.nav.setRoot(page.component);
+    this.loading.dismiss();
+
   }
 }

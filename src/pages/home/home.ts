@@ -4,6 +4,7 @@ import {RegistraPage} from "../registra/registra";
 import {Utente} from "../../Utente";
 import {LoginProvider} from "../../providers/login/login";
 import {ProfiloutentePage} from "../profiloutente/profiloutente";
+import {ProductListPage} from "../product-list/product-list";
 
 @Component({
   selector: 'page-home',
@@ -12,6 +13,7 @@ import {ProfiloutentePage} from "../profiloutente/profiloutente";
 export class HomePage {
   regPage: any;
   profPage: any;
+  prodPage: any;
   trollo: string = "false";
   user: string = "";
   pass: string = "";
@@ -40,6 +42,7 @@ export class HomePage {
       this.outProf();
       this.event.publish("loggo");
       this.loading.dismiss();
+      this.nav.setRoot(ProductListPage)
     }, err => {
       this.presentAlert3();
       console.log(err);
