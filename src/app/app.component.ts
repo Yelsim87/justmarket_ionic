@@ -2,13 +2,13 @@ import { Component, ViewChild } from '@angular/core';
 import {Nav, Platform, LoadingController, Loading, Events, MenuController, AlertController} from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
 import { HomePage } from '../pages/home/home';
 import {ListaprodottiPage} from "../pages/listaprodotti/listaprodotti";
 import {StoricoPage} from "../pages/storico/storico";
 import {LoginProvider} from "../providers/login/login";
 import {ProfiloutentePage} from "../pages/profiloutente/profiloutente";
 import {CarrelloPage} from "../pages/carrello/carrello";
+import {ProductListPage} from "../pages/product-list/product-list";
 
 @Component({
   templateUrl: 'app.html'
@@ -83,7 +83,7 @@ export class MyApp {
       console.log("qui ci sono " + this.trollo);
       this.pages = [
         { title: 'Home', component: HomePage },
-        { title: 'Prodotti', component: ListaprodottiPage }
+        { title: 'Prodotti', component: ProductListPage }
       ];
     }
     if(this.trollo === 'true') {

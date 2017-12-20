@@ -18,6 +18,7 @@ import {ModificaprofiloutentePage} from "../pages/modificaprofiloutente/modifica
 import {StoricoPage} from "../pages/storico/storico";
 import {CarrelloPage} from "../pages/carrello/carrello";
 import { ListaprodottiProvider } from '../providers/listaprodotti/listaprodotti';
+import {ProductListPage} from "../pages/product-list/product-list";
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ListaprodottiProvider } from '../providers/listaprodotti/listaprodotti'
     ModificaprofiloutentePage,
     StoricoPage,
     ListaprodottiPage,
-    CarrelloPage
+    CarrelloPage,
+    ProductListPage
   ],
   imports: [
     BrowserModule,
@@ -44,7 +46,8 @@ import { ListaprodottiProvider } from '../providers/listaprodotti/listaprodotti'
     ModificaprofiloutentePage,
     StoricoPage,
     ListaprodottiPage,
-    CarrelloPage
+    CarrelloPage,
+    ProductListPage
   ],
   providers: [
     StatusBar,
