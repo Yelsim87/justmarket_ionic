@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import {IonicPage, Loading, LoadingController, NavController, Platform} from 'ionic-angular';
 import {LoginProvider} from "../../providers/login/login";
 import {Prodotto} from "../../Prodotto";
+import {Transazione} from "../../Transazione";
+import {CreditCardProvider} from "../../providers/credit-card/credit-card";
+import {TransizioniProvider} from "../../providers/transizioni/transizioni";
 
 @IonicPage()
 @Component({
@@ -16,10 +19,15 @@ export class CarrelloPage {
   dateNow = new Date();
   ddNow = new Date();
   dddNow = new Date();
-  constructor(public loadingCtrl: LoadingController, public platform: Platform, public nav: NavController, private loginService: LoginProvider) {
+  crediCard = 0
+  listaCarte = new Array()
+  transazione = new Transazione()
+
+  constructor(private transService:TransizioniProvider, private creditService: CreditCardProvider, public loadingCtrl: LoadingController, public platform: Platform, public nav: NavController, private loginService: LoginProvider) {
     this.platform.ready().then(() => {
       this.showLoading();
       this.getLista();
+      this.getCarte()
     })
   }
 
@@ -74,4 +82,32 @@ export class CarrelloPage {
     this.loading.present();
   }
 
+  buyCarrello() {
+    if (this.crediCard != 0 && JSON.parse(localStorage.getItem('carrello')).length != 0) {
+      this.transazione.listaProdotti = JSON.parse(localStorage.getItem('carrello'))
+      localStorage.setItem('carrello', JSON.stringify(new Array()));
+      console.log(this.transazione)
+      this.transService.saveTransaction(this.transazione, this.crediCard).subscribe(result => {
+          this.listaCarrello = new Array()
+          console.log(result)
+
+          this.prezzoTotale = 0;
+        }
+      )
+    }
+  }
+
+
+  getCarte() {
+    this.listaCarte = new Array()
+    this.creditService.getAll().subscribe(d => {
+      console.log(d)
+      this.listaCarte = d;
+      for (let card of this.listaCarte) {
+        card.numeroCarta = atob(card.numeroCarta)
+        console.log(card)
+      }
+
+    })
+  }
 }

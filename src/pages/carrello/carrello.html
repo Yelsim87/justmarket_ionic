@@ -3,7 +3,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Carrello  {{prezzoTotale | number: '1.2-2'}}</ion-title>
+    <ion-title>Carrello</ion-title><ion-title class="pull-right">Prezzo totale: {{prezzoTotale | number: '1.2-2'}}€</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -21,5 +21,9 @@
       <button ion-button (tap)="deleteCarrello(prod)" clear item-end><ion-icon style="font-size: 30px" ios="ios-trash danger" md="md-trash"></ion-icon></button>
     </ion-item>
   </ion-list>
+  <ion-item><select class="carte">
+    <option hidden>Seleziona Carta</option>
+    <option *ngFor="let card of listaCarte" value="{{card.id}}">{{card.numeroCarta}}</option>
+  </select></ion-item>
 
 </ion-content>
