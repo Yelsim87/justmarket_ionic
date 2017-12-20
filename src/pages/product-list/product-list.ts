@@ -45,8 +45,9 @@ export class ProductListPage {
       this.filtraT()
       this.isLog();
     })
-    if (JSON.parse(localStorage.getItem('carrello')) === null) {
-      localStorage.setItem('carrello', JSON.stringify(this.carrello));
+    if (localStorage.getItem('carrello') == null) {
+      console.log("qui")
+      localStorage.setItem('carrello', JSON.stringify(new Array()));
     }
     this.profPage = ProfiloutentePage;
     this.prodotti = "tot";
