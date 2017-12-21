@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {IonicPage, Loading, NavParams, LoadingController, Platform} from 'ionic-angular';
 import {Transazione} from "../../Transazione";
+import {Prodotto} from "../../Prodotto";
 
 @IonicPage()
 @Component({
