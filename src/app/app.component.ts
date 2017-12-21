@@ -80,7 +80,7 @@ export class MyApp {
     if(this.trollo === 'false') {
       console.log("qui ci sono " + this.trollo);
       this.pages = [
-        { title: 'Home', component: HomePage },
+        { title: 'Login', component: HomePage },
         { title: 'Prodotti', component: ProductListPage },
         { title: 'Carrello', component: CarrelloPage }
       ];

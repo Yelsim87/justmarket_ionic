@@ -12,3 +12,13 @@ page-carrello {
   margin-top: 10px;
   font-weight: 800;
 }
+.checkout>div{
+  border:0 solid transparent!important;
+}
+.checkout>div>div>ion-label>button{
+  background-color: #CB0A0A;
+  color:white;
+  font-weight: 800;
+  font-size: 25px;
+  width:100%;
+}

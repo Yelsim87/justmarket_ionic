@@ -10,6 +10,9 @@
 
 <ion-content padding>
   <ion-list>
+    <ion-item *ngIf="listaCarrello.length==0">
+      <h2><strong>Non ci sono prodotti nel Carrello</strong></h2>
+     </ion-item>
     <ion-item *ngFor="let prod of listaCarrello">
 
       <h2><strong>{{prod.marca}}</strong></h2>
@@ -21,9 +24,13 @@
       <button ion-button (tap)="deleteCarrello(prod)" clear item-end><ion-icon style="font-size: 30px" ios="ios-trash danger" md="md-trash"></ion-icon></button>
     </ion-item>
   </ion-list>
-  <ion-item><select class="carte">
+  <ion-item *ngIf="trollo === 'true'" class="checkout"><select class="carte" [(ngModel)]="crediCard" >
     <option hidden>Seleziona Carta</option>
-    <option *ngFor="let card of listaCarte" value="{{card.id}}">{{card.numeroCarta}}</option>
+    <option *ngFor="let card of listaCarte" name="crediCard" value="{{card.id}}">{{card.numeroCarta}}</option>
   </select></ion-item>
+
+  <ion-item *ngIf="trollo === 'true'" class="checkout">
+    <button (tap)="buyCarrello()">Checkout</button>
+  </ion-item>
 
 </ion-content>

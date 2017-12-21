@@ -22,12 +22,15 @@ export class CarrelloPage {
   crediCard = 0
   listaCarte = new Array()
   transazione = new Transazione()
+  trollo:string='';
 
   constructor(private transService:TransizioniProvider, private creditService: CreditCardProvider, public loadingCtrl: LoadingController, public platform: Platform, public nav: NavController, private loginService: LoginProvider) {
     this.platform.ready().then(() => {
       this.showLoading();
+      this.isLog()
       this.getLista();
       this.getCarte()
+
     })
   }
 
@@ -90,7 +93,6 @@ export class CarrelloPage {
       this.transService.saveTransaction(this.transazione, this.crediCard).subscribe(result => {
           this.listaCarrello = new Array()
           console.log(result)
-
           this.prezzoTotale = 0;
         }
       )
@@ -108,6 +110,13 @@ export class CarrelloPage {
         console.log(card)
       }
 
+    })
+  }
+
+  isLog() {
+    this.loginService.isLog().subscribe(d => {
+      console.log(d);
+      this.trollo = d;
     })
   }
 }
