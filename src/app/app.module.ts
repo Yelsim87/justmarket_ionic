@@ -22,6 +22,8 @@ import {CreditCardProvider} from "../providers/credit-card/credit-card";
 import {TransizioniPage} from "../pages/transizioni/transizioni";
 import {TransizioniProvider} from "../providers/transizioni/transizioni";
 import {InfopagePage} from "../pages/infopage/infopage";
+import {Facebook} from "@ionic-native/facebook";
+import {GooglePlus} from "@ionic-native/google-plus";
 
 @NgModule({
   declarations: [
@@ -53,6 +55,8 @@ import {InfopagePage} from "../pages/infopage/infopage";
     ProductListPage
   ],
   providers: [
+    Facebook,
+    GooglePlus,
     StatusBar,
     SplashScreen,
     HttpClient,

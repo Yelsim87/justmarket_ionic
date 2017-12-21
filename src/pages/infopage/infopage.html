@@ -19,10 +19,13 @@
   <h2>Prodotto/i</h2>
   <ion-list>
   <ion-item *ngFor="let z of lol.listaProdotti">
-    Nome Prodotto: {{z.nome}}<br>
-    Marca Prodotto: {{z.marca}}<br>
+    <ion-thumbnail item-start>
+      <img src="{{z.img}}">
+    </ion-thumbnail>
+    Nome: {{z.nome}}<br>
+    Marca: {{z.marca}}<br>
     Quantità: {{z.quantitaDaAcquistare}}<br>
-    Resoconto Prezzo Prodotto: {{z.quantitaDaAcquistare * z.prezzoUnitario | number: '1.2-2'}}€
+    Prezzo unititario: {{z.prezzoUnitario | number: '1.2-2'}}€
   </ion-item>
   </ion-list>
 </ion-content>

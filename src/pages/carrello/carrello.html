@@ -17,8 +17,8 @@
 
       <h2><strong>{{prod.marca}}</strong></h2>
       <h5>{{prod.nome}}</h5>
-      <p *ngIf="prod.quantita>0">{{prod.prezzoUnitario}}€</p>
-      <p *ngIf="prod.quantita==0"><strong>Terminato</strong></p>
+      <p>{{prod.prezzoUnitario}}€ x {{prod.quantitaDaAcquistare}} = {{prod.prezzoUnitario*prod.quantitaDaAcquistare}}€
+      </p>
 
 
       <button ion-button (tap)="deleteCarrello(prod)" clear item-end><ion-icon style="font-size: 30px" ios="ios-trash danger" md="md-trash"></ion-icon></button>

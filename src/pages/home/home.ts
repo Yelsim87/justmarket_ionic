@@ -5,6 +5,7 @@ import {Utente} from "../../Utente";
 import {LoginProvider} from "../../providers/login/login";
 import {ProfiloutentePage} from "../profiloutente/profiloutente";
 import {ProductListPage} from "../product-list/product-list";
+import {Facebook, FacebookLoginResponse} from "@ionic-native/facebook";
 
 @Component({
   selector: 'page-home',
@@ -20,7 +21,7 @@ export class HomePage {
   userlog = new Utente;
   loading: Loading;
 
-  constructor(public event: Events, public loadingCtrl: LoadingController, public platform: Platform, public nav: NavController, private loginService: LoginProvider, private alertCtrl: AlertController) {
+  constructor(private face:Facebook, public event: Events, public loadingCtrl: LoadingController, public platform: Platform, public nav: NavController, private loginService: LoginProvider, private alertCtrl: AlertController) {
     this.regPage = RegistraPage;
       this.profPage = ProfiloutentePage;
      this.platform.ready().then(() => {
@@ -81,6 +82,12 @@ export class HomePage {
       content: "Caricamento..."
     });
     this.loading.present();
+  }
+
+  facebookLog(){
+      this.face.login(['public_profile', 'user_friends', 'email'])
+        .then((res: FacebookLoginResponse) => console.log('Logged into Facebook!', res))
+        .catch(e => console.log('Error logging into Facebook', e));
   }
 
 }
