@@ -22,6 +22,7 @@
       <h2><strong>{{prod.marca}}</strong></h2>
       <h5>{{prod.nome}}</h5>
       <p *ngIf="prod.quantita>0">{{prod.prezzoUnitario}}€</p>
+      <p *ngIf="prod.quantita>0">{{prod.quantita}}</p>
       <p *ngIf="prod.quantita==0"><strong>Terminato</strong></p>
 
       <button ion-button (tap)="aggiungiAlCarrello(prod)" clear item-end><img width=20px src="assets/images/shopping.png"></button>

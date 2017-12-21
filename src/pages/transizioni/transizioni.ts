@@ -24,6 +24,9 @@ export class TransizioniPage {
   getAll() {
     this.transService.getAll().subscribe(listT => {
       this.listaTransizione = <Array<Transazione>>listT;
+      for(let s of this.listaTransizione) {
+        s.numeroCarta = atob(s.numeroCarta);
+      }
     },err => {
       console.log(err);
     })

@@ -8,14 +8,12 @@ import { RegistraPage } from "../pages/registra/registra";
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import {ListaprodottiPage} from "../pages/listaprodotti/listaprodotti";
 import {HttpClientModule, HttpClient, HTTP_INTERCEPTORS} from "@angular/common/http";
 import { InterceptorProvider } from '../providers/interceptor/interceptor';
 import { SharedProvider } from '../providers/shared/shared';
 import { LoginProvider } from '../providers/login/login';
 import {ProfiloutentePage} from "../pages/profiloutente/profiloutente";
 import {ModificaprofiloutentePage} from "../pages/modificaprofiloutente/modificaprofiloutente";
-import {StoricoPage} from "../pages/storico/storico";
 import {CarrelloPage} from "../pages/carrello/carrello";
 import { ListaprodottiProvider } from '../providers/listaprodotti/listaprodotti';
 import {ProductListPage} from "../pages/product-list/product-list";
@@ -32,8 +30,6 @@ import {InfopagePage} from "../pages/infopage/infopage";
     RegistraPage,
     ProfiloutentePage,
     ModificaprofiloutentePage,
-    StoricoPage,
-    ListaprodottiPage,
     CarrelloPage,
     TransizioniPage,
     InfopagePage,
@@ -51,8 +47,6 @@ import {InfopagePage} from "../pages/infopage/infopage";
     RegistraPage,
     ProfiloutentePage,
     ModificaprofiloutentePage,
-    StoricoPage,
-    ListaprodottiPage,
     CarrelloPage,
     TransizioniPage,
     InfopagePage,

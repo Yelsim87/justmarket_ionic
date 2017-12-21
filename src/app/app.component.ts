@@ -3,8 +3,6 @@ import {Nav, Platform, LoadingController, Loading, Events, MenuController, Alert
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
-import {ListaprodottiPage} from "../pages/listaprodotti/listaprodotti";
-import {StoricoPage} from "../pages/storico/storico";
 import {LoginProvider} from "../providers/login/login";
 import {ProfiloutentePage} from "../pages/profiloutente/profiloutente";
 import {CarrelloPage} from "../pages/carrello/carrello";
@@ -83,7 +81,8 @@ export class MyApp {
       console.log("qui ci sono " + this.trollo);
       this.pages = [
         { title: 'Home', component: HomePage },
-        { title: 'Prodotti', component: ProductListPage }
+        { title: 'Prodotti', component: ProductListPage },
+        { title: 'Carrello', component: CarrelloPage }
       ];
     }
 
@@ -91,7 +90,6 @@ export class MyApp {
       this.pages = [
         { title: 'Prodotti', component: ProductListPage },
         { title: 'Carrello', component: CarrelloPage },
-        { title: 'Storico', component: StoricoPage },
         { title: 'Transizioni', component: TransizioniPage }
       ];
     }

@@ -9,14 +9,19 @@
 
 <ion-content padding>
  <h2>Transazione</h2>
- <p>Numero Carta: {{lol.numeroCarta}}<br>
+<ion-list>
+ <ion-item>
+   Numero Carta: {{lol.numeroCarta}}<br>
   Prezzo Ivato: {{lol.prezzoIva}}<br>
-   Data Transazione: {{lol.data}}
- </p>
+   Data Transazione: {{lol.data | date: 'short'}}
+ </ion-item>
+</ion-list>
   <h2>Prodotto/i</h2>
-  <p *ngFor="let z of lol.listaProdotti">
+  <ion-list>
+  <ion-item *ngFor="let z of lol.listaProdotti">
     Nome Prodotto: {{z.nome}}<br>
     Marca Prodotto: {{z.marca}}<br>
     Quantità: {{z.quantitaDaAcquistare}}
-  </p>
+  </ion-item>
+  </ion-list>
 </ion-content>

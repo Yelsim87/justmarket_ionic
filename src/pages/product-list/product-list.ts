@@ -8,13 +8,6 @@ import {ProfiloutentePage} from "../profiloutente/profiloutente";
 import {ListaprodottiProvider} from "../../providers/listaprodotti/listaprodotti";
 import {Prodotto} from "../../Prodotto";
 
-/**
- * Generated class for the ProductListPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-product-list',

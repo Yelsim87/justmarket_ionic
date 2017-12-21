@@ -14,7 +14,8 @@
   <ion-list>
     <ion-item *ngFor="let f of listaTransizione">
       <h2>Codice Transazione</h2>
-      <p>{{f.codiceTransazione}}</p>
+      <p>{{f.codiceTransazione}}
+      </p>
       <button ion-button icon-only item-end (click)="changePage(f)"><ion-icon name="information-circle"></ion-icon></button>
     </ion-item>
   </ion-list>
